@@ -202,7 +202,7 @@ namespace Microsoft.Extensions.Configuration.CommandLine.Test
         }
 
         [Fact]
-        public void IgnoreWhenValueForAKeyIsMissing()
+        public void TreatAsSwitchWhenValueForAKeyIsMissing()
         {
             var args = new string[]
             {
@@ -212,8 +212,8 @@ namespace Microsoft.Extensions.Configuration.CommandLine.Test
 
             var cmdLineConfig = new CommandLineConfigurationProvider(args);
             cmdLineConfig.Load();
-            Assert.Single(cmdLineConfig.GetChildKeys(new string[0], null));
             Assert.Equal("Value1", cmdLineConfig.Get("Key1"));
+            Assert.Equal("true", cmdLineConfig.Get("Key2"));
         }
 
         [Fact]
