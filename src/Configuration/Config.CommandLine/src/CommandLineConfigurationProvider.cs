@@ -41,7 +41,7 @@ namespace Microsoft.Extensions.Configuration.CommandLine
         {
             var data = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             string key, value;
-            var argArray = Args.ToArray();
+            var argArray = Args as string[] ?? Args.ToArray();
 
             for (var i = 0; i < argArray.Length; i++)
             {
